@@ -30,10 +30,8 @@ SCRIPT_JS="/var/www/html/browser/script.js"
 
 if [ -f "$SCRIPT_JS" ]; then
     echo "Updating UI credentials..."
-
-    sed -i "s|const DL_USER = \".*\";|const DL_USER = \"$ARTIFACT_USER\";|g" "$SCRIPT_JS"
-
-    sed -i "s|const DL_PASS = \".*\";|const DL_PASS = \"$ARTIFACT_PASSWORD\";|g" "$SCRIPT_JS"
+    sed -Ei "s|const DL_USER = .*;|const DL_USER = '$ARTIFACT_USER';|" /var/www/html/browser/script.js
+    sed -Ei "s|const DL_PASS = .*;|const DL_PASS = '$ARTIFACT_PASSWORD';|" /var/www/html/browser/script.js
 else
     echo "WARNING: $SCRIPT_JS not found. Skipping UI credential update."
 fi
