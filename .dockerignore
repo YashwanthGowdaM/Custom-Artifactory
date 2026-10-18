@@ -8,6 +8,7 @@ README.md
 # Docker
 Dockerfile
 .dockerignore
+docker-install.sh
 
 # OS files
 .DS_Store
